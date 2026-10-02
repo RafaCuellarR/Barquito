@@ -1,6 +1,3 @@
-# Barquito
-Software para el control del baquito, parte del proyecto Todo en Uno del CDMIT-UNAM.
-
 # Velodyne VLP-16 with ROS 2 Jazzy
 
 Guide to install ROS 2 Jazzy (Desktop), connect a Velodyne VLP-16 over Ethernet, and visualize `/velodyne_points` and `/scan` in RViz2.
@@ -60,21 +57,27 @@ ros2 run demo_nodes_cpp talker
 
 If you see `Publishing: 'Hello World: ...'`, the install works. If the install steps change, check the official guide: https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html
 
-### 1.6 Install the Velodyne packages and tools
+### 1.6 Install the Velodyne drivers and tools
+
+The repository includes a script that installs the Velodyne packages, RViz2, the TF tools and the network utilities. From the root of the repo:
 
 ```bash
-sudo apt install -y \
-  ros-jazzy-velodyne \
-  ros-jazzy-velodyne-driver \
-  ros-jazzy-velodyne-pointcloud \
-  ros-jazzy-velodyne-laserscan \
-  ros-jazzy-velodyne-msgs \
-  ros-jazzy-tf2-ros ros-jazzy-tf2-tools \
-  net-tools tcpdump
+cd scripts
+chmod +x install_velodyne.sh
+./install_velodyne.sh
 ```
 
-If `apt` cannot find the `velodyne` packages, build them from source:
-https://github.com/ros-drivers/velodyne (use the branch matching your distro, or `ros2`).
+Make sure ROS 2 Jazzy is installed first (steps 1.1 to 1.5), because the script detects your ROS distro and sources it.
+
+The script asks for `sudo` when it runs `apt`, so you may be prompted for your password.
+
+Optionally, pass the name of the network interface connected to the sensor and the script will also set the static IP described in section 2:
+
+```bash
+./install_velodyne.sh enp3s0
+```
+
+When it finishes, it prints a summary of the launch and RViz commands. You can then continue with section 2 (if you did not pass an interface) or go straight to section 3.
 
 ---
 
