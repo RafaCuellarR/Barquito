@@ -1,4 +1,7 @@
-# Velodyne VLP-16 with ROS 2 Jazzy
+# Barquito
+Software para el control del baquito, parte del proyecto Todo en Uno del CDMIT-UNAM.
+
+## Velodyne VLP-16 with ROS 2 Jazzy
 
 Guide to install ROS 2 Jazzy (Desktop), connect a Velodyne VLP-16 over Ethernet, and visualize `/velodyne_points` and `/scan` in RViz2.
 
