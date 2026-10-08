@@ -1,0 +1,9 @@
+[submodule "src/Hardware/isaac_ros_common"]
+	path = src/Hardware/isaac_ros_common
+	url = git@github.com:NVIDIA-ISAAC-ROS/isaac_ros_common.git
+[submodule "src/Hardware/isaac_ros_image_pipeline"]
+	path = src/Hardware/isaac_ros_image_pipeline
+	url = git@github.com:NVIDIA-ISAAC-ROS/isaac_ros_image_pipeline.git
+[submodule "src/Hardware/isaac_ros_nitros"]
+	path = src/Hardware/isaac_ros_nitros
+	url = git@github.com:NVIDIA-ISAAC-ROS/isaac_ros_nitros.git
