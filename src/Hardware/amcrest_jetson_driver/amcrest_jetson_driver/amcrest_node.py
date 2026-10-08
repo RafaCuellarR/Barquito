@@ -23,17 +23,19 @@ class JetsonAmcrestDriver(Node):
         
         # Construcción limpia del pipeline idéntico al de gst-launch
         gst_pipeline = (
-            f"rtspsrc location=rtsp://{ip_camara}:554/cam/realmonitor?channel=1&subtype=0 "
-            f"user-id={usuario} user-pw={contrasena} latency=200 protocols=tcp ! "
-            f"rtph264depay ! h264parse ! queue ! nvv4l2decoder low-latency-mode=true disable-dpb=true ! "
-            f"nvvidconv ! video/x-raw, format=BGRx ! videoconvert ! video/x-raw, format=BGR ! appsink drop=true max-buffers=1"
+            f'rtspsrc location="rtsp://{ip_camara}:554/cam/realmonitor?channel=1&subtype=0" '
+            f'user-id={usuario} user-pw={contrasena} latency=200 protocols=tcp ! '
+            f'rtph264depay ! h264parse ! queue ! nvv4l2decoder ! '
+            f'nvvidconv ! video/x-raw,format=BGRx ! videoconvert ! video/x-raw,format=BGR ! '
+            f'appsink drop=true max-buffers=1 sync=false'
         )
         
         self.get_logger().info(f"Iniciando captura RTSP en {ip_camara} con aceleración por hardware NVIDIA NVDEC...")
         self.cap = cv2.VideoCapture(gst_pipeline, cv2.CAP_GSTREAMER)
         
         if not self.cap.isOpened():
-            self.get_logger().error("ERROR CRÍTICO: No se pudo abrir el pipeline de GStreamer.")
+            self.get_logger().error("Could not open GStreamer pipeline")
+            raise RuntimeError("Pipeline failed")
 
     def timer_callback(self):
         if self.cap.grab():
