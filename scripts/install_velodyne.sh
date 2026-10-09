@@ -24,7 +24,9 @@ if [[ -z "${ROS_DISTRO}" ]]; then
 fi
 echo ">> Using ROS 2 distro: ${ROS_DISTRO}"
 # shellcheck disable=SC1090
+set +u
 source "/opt/ros/${ROS_DISTRO}/setup.bash"
+set -u
 
 # --- 2. Install packages ----------------------------------------------------
 sudo apt update

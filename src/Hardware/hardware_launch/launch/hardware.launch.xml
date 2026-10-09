@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Include Amcrest camera launch file -->
+    <include file="$(find-pkg-share amcrest_jetson_driver)/launch/amcrest.launch.xml"/>
+
+    <!-- Launch Velodyne VLP-16 -->
+    <include file="$(find-pkg-share velodyne)/launch/velodyne-all-nodes-VLP16-launch.py"/>
+
+    <!-- Launch RViz2 with the Barquito configuration -->
+    <node
+        pkg="rviz2"
+        exec="rviz2"
+        name="rviz2"
+        output="screen"
+        args="-d $(find-pkg-share amcrest_jetson_driver)/rviz/barquito.rviz"
+    />
+
+    <!-- Static transform: base_link -> velodyne -->
+    <node
+        pkg="tf2_ros"
+        exec="static_transform_publisher"
+        name="base_link_to_velodyne"
+        output="screen"
+        args="--frame-id base_link --child-frame-id velodyne"
+    />
+
+</launch>
