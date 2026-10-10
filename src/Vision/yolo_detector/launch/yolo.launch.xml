@@ -1,0 +1,17 @@
+<launch>
+  <!-- Detector settings -->
+  <arg name="model" default="/home/cdmit/Barquito/src/Vision/yolo11n.engine"
+       description="Absolute path to the TensorRT .engine (or .pt) file"/>
+  <arg name="conf" default="0.4" description="Confidence threshold"/>
+  <arg name="imgsz" default="640" description="Inference image size"/>
+  <arg name="publish_image" default="true" description="Publish annotated image on detections/image"/>
+  <arg name="max_frame_age" default="2.0" description="Reject stored frames older than this (s), 0 = never"/>
+
+  <node pkg="yolo_detector" exec="yolo_node" name="yolo_node" output="screen">
+    <param name="model" value="$(var model)"/>
+    <param name="conf" value="$(var conf)"/>
+    <param name="imgsz" value="$(var imgsz)"/>
+    <param name="publish_image" value="$(var publish_image)"/>
+    <param name="max_frame_age" value="$(var max_frame_age)"/>
+  </node>
+</launch>
