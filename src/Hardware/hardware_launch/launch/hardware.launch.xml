@@ -13,7 +13,7 @@
         exec="rviz2"
         name="rviz2"
         output="screen"
-        args="-d $(find-pkg-share amcrest_jetson_driver)/rviz/barquito.rviz"
+        args="-d $(find-pkg-share hardware_launch)/rviz/barquito.rviz"
     />
 
     <!-- Static transform: base_link -> velodyne -->
