@@ -12,7 +12,7 @@ class JetsonAmcrestDriver(Node):
         self.bridge = CvBridge()
         
         # Declarar parámetros nativos de ROS 2 (con tus valores por defecto)
-        self.declare_parameter('ip_camara', '192.168.1.108')
+        self.declare_parameter('ip_camara', '172.16.5.182')
         self.declare_parameter('usuario', 'admin')
         self.declare_parameter('contrasena', 'cdmit2026')
         
