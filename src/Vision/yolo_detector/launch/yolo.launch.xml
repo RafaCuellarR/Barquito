@@ -1,7 +1,7 @@
 <launch>
   <!-- Detector settings -->
   <arg name="model"
-     default="$(find-pkg-share yolo_detector)/model/yolo11n.engine"
+     default="$(find-pkg-share yolo_detector)/models/yolo11n.engine"
      description="Path to the TensorRT .engine (or .pt) file, relative to the workspace"/>
   <arg name="conf" default="0.4" description="Confidence threshold"/>
   <arg name="imgsz" default="640" description="Inference image size"/>
