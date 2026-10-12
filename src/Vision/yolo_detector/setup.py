@@ -14,8 +14,8 @@ setup(
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'launch'),
             glob('launch/*.launch.xml')),
-        (os.path.join('share', package_name, 'model'),
-            glob('model/yolo11n.*')),
+        (os.path.join('share', package_name, 'models'),
+            glob('models/yolo11n.*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -31,6 +31,7 @@ setup(
     entry_points={
         'console_scripts': [
             'yolo_node = yolo_detector.yolo_node:main',
+            'yolo_continuous_node = yolo_detector.yolo_continuous_node:main'
         ],
     },
 )
