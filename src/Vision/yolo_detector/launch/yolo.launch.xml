@@ -8,7 +8,7 @@
   <arg name="publish_image" default="true" description="Publish annotated image on detections/image"/>
   <arg name="max_frame_age" default="2.0" description="Reject stored frames older than this (s), 0 = never"/>
 
-  <node pkg="yolo_detector" exec="yolo_node" name="yolo_node" output="screen">
+  <node pkg="yolo_detector" exec="yolo_continuous_node" name="yolo_continuous_node" output="screen">
     <param name="model" value="$(var model)"/>
     <param name="conf" value="$(var conf)"/>
     <param name="imgsz" value="$(var imgsz)"/>
