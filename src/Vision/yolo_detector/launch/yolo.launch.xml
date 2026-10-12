@@ -1,7 +1,8 @@
 <launch>
   <!-- Detector settings -->
-  <arg name="model" default="/home/cdmit/Barquito/src/Vision/yolo11n.engine"
-       description="Absolute path to the TensorRT .engine (or .pt) file"/>
+  <arg name="model"
+     default="$(find-pkg-share yolo_detector)/model/yolo11n.engine"
+     description="Path to the TensorRT .engine (or .pt) file, relative to the workspace"/>
   <arg name="conf" default="0.4" description="Confidence threshold"/>
   <arg name="imgsz" default="640" description="Inference image size"/>
   <arg name="publish_image" default="true" description="Publish annotated image on detections/image"/>

@@ -14,6 +14,8 @@ setup(
         ('share/' + package_name, ['package.xml']),
         (os.path.join('share', package_name, 'launch'),
             glob('launch/*.launch.xml')),
+        (os.path.join('share', package_name, 'model'),
+            glob('model/yolo11n.*')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
