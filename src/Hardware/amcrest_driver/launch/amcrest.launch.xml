@@ -1,6 +1,6 @@
 <launch>
   <!-- 1. Nodo del Driver de la Amcrest (Los parámetros se leen internamente en Python) -->
-  <node pkg="amcrest_jetson_driver" exec="amcrest_node" name="jetson_amcrest_driver" output="screen">
+  <node pkg="amcrest_driver" exec="amcrest_camera_node" name="amcrest_camera_node" output="screen">
     <param name="ip_camara" value="172.16.5.182" />
     <param name="usuario" value="admin" />
     <param name="contrasena" value="cdmit2026" />

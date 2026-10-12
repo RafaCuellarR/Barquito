@@ -2,7 +2,7 @@
 <launch>
 
     <!-- Include Amcrest camera launch file -->
-    <include file="$(find-pkg-share amcrest_jetson_driver)/launch/amcrest.launch.xml"/>
+    <include file="$(find-pkg-share amcrest_driver)/launch/amcrest.launch.xml"/>
 
     <!-- Launch Velodyne VLP-16 -->
     <include file="$(find-pkg-share velodyne)/launch/velodyne-all-nodes-VLP16-launch.py"/>
