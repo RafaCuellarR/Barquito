@@ -1,0 +1,29 @@
+# Python dependencies for the yolo_detector ROS 2 node (Python 3.12, ROS 2 Jazzy)
+# Versions are the ones confirmed working (torch 2.14.1+cu130, CUDA available).
+
+# --- Inference ---
+ultralytics==8.4.175
+torch==2.14.1
+torchvision==0.29.1
+
+# --- TensorRT (needed to load .engine files) ---
+# Ultralytics auto-installs this at node start if missing (~3.8 GB download, ~2.5 min),
+# so install it up front. x86_64 only: on Jetson (aarch64) TensorRT comes from JetPack,
+# not pip, so this line is skipped there.
+tensorrt-cu13==11.4.0.106; platform_machine == "x86_64"
+
+# --- Must stay on NumPy 1.x: Jazzy's cv_bridge is built against it ---
+numpy==1.26.4
+
+# --- Build tooling (colcon inside the venv so the node's shebang uses the venv Python) ---
+setuptools<80
+colcon-common-extensions
+catkin_pkg
+lark
+pyyaml
+empy==3.3.4
+
+# --- Only needed to export yolo11n.pt -> .engine (not needed at runtime) ---
+# onnx
+# onnxslim
+# onnxruntime-gpu
